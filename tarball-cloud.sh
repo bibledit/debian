@@ -37,7 +37,7 @@ xattr -r -c *
 
 
 echo Remove macOS extended attributes fromm the core cloud library.
-CLOUDSOURCE="../../cloud"
+CLOUDSOURCE="../cloud"
 pushd $CLOUDSOURCE
 if [ $? -ne 0 ]; then exit; fi
 CLOUDSOURCE=`pwd`
@@ -47,6 +47,12 @@ rm -f bibledit*gz
 make dist --jobs=8
 if [ $? -ne 0 ]; then exit; fi
 popd
+
+
+echo Copy the Quill sources to /tmp/quill
+rm -rf /tmp/quill
+cp -r quill /tmp
+if [ $? -ne 0 ]; then exit; fi
 
 
 # The script unpacks the Bibledit Cloud tarball,
@@ -60,7 +66,7 @@ popd
 
 
 TMPDEBIAN=/tmp/bibledit-debian
-echo Unpack the tarball in working folder $TMPDEBIAN.
+echo Unpack the tarball and source in working folder $TMPDEBIAN.
 rm -rf $TMPDEBIAN
 if [ $? -ne 0 ]; then exit; fi
 mkdir $TMPDEBIAN
@@ -164,6 +170,12 @@ if [ $? -ne 0 ]; then exit; fi
 rm *.bak
 # Remove the embedded utf8proc files.
 rm -rf utf8proc*
+
+
+echo Add the full Quill source code.
+# See Debian bug https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1017083
+cp -r /tmp/quill .
+if [ $? -ne 0 ]; then exit; fi
 
 
 echo Reconfiguring the source.

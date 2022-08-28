@@ -55,8 +55,10 @@ sed -i.bak 's/# debian//g' Makefile.am
 if [ $? -ne 0 ]; then exit; fi
 rm *.bak
 # Also remove the embedded *.h files to be sure building does not reference them.
-# There had been a case that building used the embedded *.h files, leading to segmentation faults.
-# For cleanness, remove the whole mbedtls directory, so all traces of it are gone completely.
+# There had been a case that building used the embedded *.h files,
+# leading to segmentation faults.
+# For cleanness, remove the whole mbedtls directory,
+# so all traces of it are gone completely.
 rm -rf mbedtls*
 
 
@@ -80,6 +82,12 @@ echo Disable mach.h definitions.
 sed -i.bak '/HAVE_MACH_MACH/d' configure.ac
 if [ $? -ne 0 ]; then exit; fi
 rm configure.ac.bak
+if [ $? -ne 0 ]; then exit; fi
+
+
+echo Add the full Quill source code.
+# See Debian bug https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1017083
+cp -r /tmp/quill .
 if [ $? -ne 0 ]; then exit; fi
 
 

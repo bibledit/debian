@@ -33,8 +33,15 @@ if [ $? -ne 0 ]; then exit; fi
 echo A tarball was created at $DEBIANSID
 
 
+echo Copying quill sources to $DEBIANSID
+rsync -av --delete quill $DEBIANSID:/tmp
+if [ $? -ne 0 ]; then exit; fi
+
+
 echo Copying script to $DEBIANSID
 scp tarball-client-sid.sh $DEBIANSID:.
 if [ $? -ne 0 ]; then exit; fi
 ssh $DEBIANSID "./tarball-client-sid.sh"
 if [ $? -ne 0 ]; then exit; fi
+
+
