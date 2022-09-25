@@ -45,3 +45,13 @@ ssh $DEBIANSID "./tarball-client-sid.sh"
 if [ $? -ne 0 ]; then exit; fi
 
 
+echo Cleaning up
+ssh $DEBIANSID "rm tarball-client-sid.sh"
+if [ $? -ne 0 ]; then exit; fi
+
+
+echo Copying tarball back to Desktop
+rm Desktop/bibledit*tar.gz
+scp "$DEBIANSID:bibledit-5*.tar.gz" Desktop
+if [ $? -ne 0 ]; then exit; fi
+
