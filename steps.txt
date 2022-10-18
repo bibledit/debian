@@ -16,6 +16,7 @@ Or download one for bibledit-desktop.
 Or download upstream tarball:
 $ uscan --download-current-version --verbose
 
+Publish the tarball on GitHub bibledit/debian
 
 Pull all changes.
 $ gbp pull --all
