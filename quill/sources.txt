@@ -21,6 +21,9 @@ The current directory has a subfolder called "source".
 This folder contains the Typescript source code of the Quill editor.
 This was downloaded from https://github.com/quilljs/quill
 
+The source was included to fix a bug in the Debian Bug Tracker:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1017083
+
 Bibledit has included several minified Javascript objects.
 Bibledit does this intentionally.
 There is several minifiers, like YUI, Uglify.JS, and others.
@@ -30,3 +33,7 @@ The Quill operational code can be created from the Quill source code.
 The folder "source/_develop/scripts" contains scripts for that.
 Bibledit includes the minified versions provided by the developers.
 This way the developers are more sure to have well-tested and reliable minified objects.
+
+Abother bug was opened in Debian:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1023373
+It's about the file "analytics.html" that applies analytics.
