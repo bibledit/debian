@@ -28,12 +28,33 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXLegacyTarget section */
+		CA1E99F12927FAA80055BA8D /* target */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = CA1E99F42927FAA90055BA8D /* Build configuration list for PBXLegacyTarget "target" */;
+			buildPhases = (
+			);
+			buildToolPath = ls;
+			dependencies = (
+			);
+			name = target;
+			passBuildSettingsInEnvironment = 1;
+			productName = target;
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXProject section */
 		CA96AF6928E0783C00219854 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					CA1E99F12927FAA80055BA8D = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
 			};
 			buildConfigurationList = CA96AF6C28E0783C00219854 /* Build configuration list for PBXProject "xcode" */;
 			compatibilityVersion = "Xcode 13.0";
@@ -48,11 +69,39 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				CA1E99F12927FAA80055BA8D /* target */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin XCBuildConfiguration section */
+		CA1E99F22927FAA90055BA8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = L37WFUB5MH;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CA1E99F32927FAA90055BA8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = L37WFUB5MH;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		CA96AF7628E0783C00219854 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -165,6 +214,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CA1E99F42927FAA90055BA8D /* Build configuration list for PBXLegacyTarget "target" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA1E99F22927FAA90055BA8D /* Debug */,
+				CA1E99F32927FAA90055BA8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CA96AF6C28E0783C00219854 /* Build configuration list for PBXProject "xcode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

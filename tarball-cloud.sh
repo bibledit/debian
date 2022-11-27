@@ -49,10 +49,11 @@ if [ $? -ne 0 ]; then exit; fi
 popd
 
 
-echo Copy the Quill sources to /tmp/quill
-rm -rf /tmp/quill
-cp -r quill /tmp
-if [ $? -ne 0 ]; then exit; fi
+# The following was disabled because this is now port of the repository in salsa.debian.org
+#echo Copy the Quill sources to /tmp/quill
+#rm -rf /tmp/quill
+#cp -r quill /tmp
+#if [ $? -ne 0 ]; then exit; fi
 
 
 # The script unpacks the Bibledit Cloud tarball,
@@ -172,10 +173,10 @@ rm *.bak
 rm -rf utf8proc*
 
 
-echo Add the full Quill source code.
+# echo Add the full Quill source code.
 # See Debian bug https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1017083
-cp -r /tmp/quill .
-if [ $? -ne 0 ]; then exit; fi
+# cp -r /tmp/quill .
+# if [ $? -ne 0 ]; then exit; fi
 
 
 echo Reconfiguring the source.

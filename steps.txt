@@ -4,6 +4,7 @@ Steps to build the Debian packages.
 On Debian, clone the repository.
 $ gbp clone --all git@salsa.debian.org:pkg-crosswire-team/bibledit.git
 $ gbp clone --all git@salsa.debian.org:debian/bibledit-cloud.git
+$ gbp clone --all git@salsa.debian.org:pkg-crosswire-team/bibledit-cloud.git
 $ gbp clone --all git@salsa.debian.org:debian/bibledit-desktop.git
 $ gbp clone --all git@salsa.debian.org:pkg-crosswire-team/sword-comm-mhc.git
 
@@ -84,7 +85,7 @@ $ gbp buildpackage --git-ignore-branch --git-export-dir=/tmp/
 
 
 Do a number of checks.
-$ lintian --display-info --pedantic --no-tag-display-limit --info /tmp/*changes /tmp/*deb /tmp/*dsc
+$ lintian --display-info --pedantic --tag-display-limit 0 --info /tmp/*changes /tmp/*deb /tmp/*dsc
 $ debc *.changes
 $ git diff <commit>
 $ dpkg-deb -c foo.deb
