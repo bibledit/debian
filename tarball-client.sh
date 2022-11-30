@@ -33,11 +33,6 @@ if [ $? -ne 0 ]; then exit; fi
 echo A tarball was created at $DEBIANSID
 
 
-echo Copying quill sources to $DEBIANSID
-rsync -av --delete quill $DEBIANSID:/tmp
-if [ $? -ne 0 ]; then exit; fi
-
-
 echo Copying script to $DEBIANSID
 scp tarball-client-sid.sh $DEBIANSID:.
 if [ $? -ne 0 ]; then exit; fi
@@ -51,7 +46,7 @@ if [ $? -ne 0 ]; then exit; fi
 
 
 echo Copying tarball back to Desktop
-rm Desktop/bibledit*tar.gz
-scp "$DEBIANSID:bibledit-5*.tar.gz" Desktop
+rm ~/Desktop/bibledit*tar.gz
+scp "$DEBIANSID:bibledit-5*.tar.gz" ~/Desktop
 if [ $? -ne 0 ]; then exit; fi
 

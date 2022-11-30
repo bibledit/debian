@@ -85,12 +85,6 @@ rm configure.ac.bak
 if [ $? -ne 0 ]; then exit; fi
 
 
-echo Add the full Quill source code.
-# See Debian bug https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1017083
-cp -r /tmp/quill .
-if [ $? -ne 0 ]; then exit; fi
-
-
 echo Reconfiguring the source.
 ./reconfigure
 if [ $? -ne 0 ]; then exit; fi
