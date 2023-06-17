@@ -110,8 +110,8 @@ $ rm /tmp/*
 
 Push the changes to the remote repository.
 $ gbp push --pristine-tar
-$ git push --all
-$ git push --tags
+# $ git push --all
+# $ git push --tags
 
 
 
