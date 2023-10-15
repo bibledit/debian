@@ -134,3 +134,27 @@ https://wiki.debian.org/Javascript/Repacking
 
 To build source-only package.
 $ debuild -S
+
+
+Uploading commands to incoming
+==============================
+
+Example queue.commands file:
+
+Uploader: Teus Benschop <teusbenschop@debian.org>
+Commands:
+ rm libpqxx_7.8.1-1.dsc
+ rm libpqxx_7.8.1.orig.tar.gz
+ rm libpqxx_7.8.1-1.debian.tar.xz
+ rm libpqxx_7.8.1-1_source.buildinfo
+ rm libpqxx_7.8.1-1_source.changes
+
+Sign this file:
+$ gpg --clearsign file
+
+Upload the signed file:
+$ dcut -U signed.commands
+
+Or use this:
+$ dcut rm libpqxx_7.8.1-1.dsc
+

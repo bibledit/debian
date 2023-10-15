@@ -32,3 +32,11 @@ Creating a patch for a package:
 https://wiki.debian.org/UsingQuilt
 https://raphaelhertzog.com/2011/07/04/how-to-prepare-patches-for-debian-packages/
 
+
+Locating a key:
+$ gpg --locate-keys <email address>
+
+
+Singning keys:
+https://wiki.debian.org/Keysigning
+
