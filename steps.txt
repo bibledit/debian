@@ -7,6 +7,7 @@ $ gbp clone --all git@salsa.debian.org:debian/bibledit-cloud.git
 $ gbp clone --all git@salsa.debian.org:pkg-crosswire-team/bibledit-cloud.git
 $ gbp clone --all git@salsa.debian.org:debian/bibledit-desktop.git
 $ gbp clone --all git@salsa.debian.org:pkg-crosswire-team/sword-comm-mhc.git
+$ gbp clone --all git@salsa.debian.org:debian/libpqxx.git
 
 
 On macOS, create a tarball suitable for Debian.
@@ -38,6 +39,7 @@ This will store the passphrase for the automated tools to use.
 Import the upstream tarball and use pristine-tar and sign tags.
 See: https://honk.sigxcpu.org/projects/git-buildpackage/manual-html/gbp.import.new.upstream.html
 $ gbp import-orig --pristine-tar --sign-tags ../bibledit*-5*.tar.gz
+$ gbp import-orig --pristine-tar --sign-tags --debian-branch=debian/sid ../libpqxx*.tar
 
 
 
@@ -71,12 +73,14 @@ $ gbp pq drop
 Update the debian/changelog to the correct version.
 $ gbp dch --git-author
 $ gbp dch --git-author --release
+$ gbp dch --git-author --release --debian-branch=debian/sid
 Without doing the above, the package won't build.
 
 
 
 Build the package:
 $ gbp buildpackage --git-export-dir=/tmp/
+$ gbp buildpackage --git-export-dir=/tmp/ --git-debian-branch=debian/sid
 When having uncommitted changes in the branch:
 $ gbp buildpackage --git-ignore-new --git-export-dir=/tmp/
 When on the patch queue branch:
@@ -98,6 +102,7 @@ Test the package.
 Package is OK: Sign the tag and build sources only with -S :
 $ rm /tmp/*
 $ gbp buildpackage -S --git-tag --git-sign --git-export-dir=/tmp/
+$ gbp buildpackage -S --git-tag --git-sign --git-export-dir=/tmp/ --git-debian-branch=debian/sid
 To include the .orig.tar.gz, add the -sa switch. 
 To force the exclusion of the original source, add the -sd switch.
 
@@ -110,6 +115,7 @@ $ rm /tmp/*
 
 Push the changes to the remote repository.
 $ gbp push --pristine-tar
+$ gbp push --pristine-tar --debian-branch=debian/sid
 # $ git push --all
 # $ git push --tags
 
