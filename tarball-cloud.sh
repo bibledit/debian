@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (©) 2003-2022 Teus Benschop.
+# Copyright (©) 2003-2025 Teus Benschop.
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -47,13 +47,6 @@ rm -f bibledit*gz
 make dist --jobs=8
 if [ $? -ne 0 ]; then exit; fi
 popd
-
-
-# The following was disabled because this is now port of the repository in salsa.debian.org
-#echo Copy the Quill sources to /tmp/quill
-#rm -rf /tmp/quill
-#cp -r quill /tmp
-#if [ $? -ne 0 ]; then exit; fi
 
 
 # The script unpacks the Bibledit Cloud tarball,
