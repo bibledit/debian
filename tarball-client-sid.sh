@@ -49,17 +49,17 @@ echo Link with the system-provided mbed TLS library.
 # Fix for lintian error "embedded-library usr/bin/bibledit: mbedtls":
 # * Remove mbedtls from the list of sources to compile.
 # * Add -lmbedtls and friends to the linker flags.
-#sed -i.bak '/mbedtls\//d' Makefile.am
-#if [ $? -ne 0 ]; then exit; fi
-#sed -i.bak 's/# debian//g' Makefile.am
-#if [ $? -ne 0 ]; then exit; fi
-#rm *.bak
+sed -i.bak '/mbedtls\//d' Makefile.am
+if [ $? -ne 0 ]; then exit; fi
+sed -i.bak 's/# debian//g' Makefile.am
+if [ $? -ne 0 ]; then exit; fi
+rm *.bak
 # Also remove the embedded *.h files to be sure building does not reference them.
 # There had been a case that building used the embedded *.h files,
 # leading to segmentation faults.
 # For cleanness, remove the whole mbedtls directory,
 # so all traces of it are gone completely.
-#rm -rf mbedtls*
+rm -rf mbedtls*
 
 
 echo Link with the system-provided utf8proc library.
