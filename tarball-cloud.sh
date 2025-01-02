@@ -73,11 +73,6 @@ cd bibledit*
 if [ $? -ne 0 ]; then exit; fi
 
 
-# Copy the Debian packaging source to $TMPDEBIAN
-# cp -r $DEBIANSOURCE/debian .
-# The above was done for Ubuntu but is not correct for the Debian packaging.
-
-
 echo Change \"bibledit\" to \"bibledit-cloud\" in configuring code.
 sed -i.bak 's/share\/bibledit/share\/bibledit-cloud/g' configure.ac
 if [ $? -ne 0 ]; then exit; fi
@@ -142,20 +137,20 @@ if [ $? -ne 0 ]; then exit; fi
 
 echo Link with the system-provided mbed TLS library.
 # It is important to use the system-provided mbedtls library because it is a security library.
-# This way, Debian updates to libmbedtls become available to Bibledit too.
-# With the embedded library, this is not the case.
+# This way, Debian updates to mbedtls become available to Bibledit too.
+# Were the library embedded, this would not be the case.
 # Fix for lintian error "embedded-library usr/bin/bibledit: mbedtls":
 # * Remove mbedtls from the list of sources to compile.
 # * Add -lmbedtls and friends to the linker flags.
-#sed -i.bak '/mbedtls\//d' Makefile.am
-#if [ $? -ne 0 ]; then exit; fi
-#sed -i.bak 's/# debian//g' Makefile.am
-#if [ $? -ne 0 ]; then exit; fi
-#rm *.bak
+sed -i.bak '/mbedtls\//d' Makefile.am
+if [ $? -ne 0 ]; then exit; fi
+sed -i.bak 's/# debian//g' Makefile.am
+if [ $? -ne 0 ]; then exit; fi
+rm *.bak
 # Also remove the embedded *.h files to be sure building does not reference them.
 # There had been a case that building used the embedded *.h files, leading to segmentation faults.
 # For cleanness, remove the whole mbedtls directory, so all traces of it are gone completely.
-#rm -rf mbedtls*
+rm -rf mbedtls*
 
 
 echo Link with the system-provided utf8proc library.
@@ -229,4 +224,3 @@ if [ $? -ne 0 ]; then exit; fi
 
 
 echo Ready creating bibledit-cloud tarball for Debian.
-
