@@ -105,6 +105,7 @@ $ gbp buildpackage -S --git-tag --git-sign --git-export-dir=/tmp/
 $ gbp buildpackage -S --git-tag --git-sign --git-export-dir=/tmp/ --git-debian-branch=debian/sid
 To include the .orig.tar.gz, add the -sa switch. 
 To force the exclusion of the original source, add the -sd switch.
+For a library transition upload to experimental, build a binary package too.
 
 
 Upload the package:
