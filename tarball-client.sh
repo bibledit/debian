@@ -17,6 +17,10 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
+# Exit script on error.
+set -e
+
+
 DEBIANSOURCE=`dirname $0`
 cd $DEBIANSOURCE
 DEBIANSOURCE=`pwd`
@@ -24,29 +28,23 @@ echo Running script from $DEBIANSOURCE
 
 
 source ~/scr/sid-ip
-if [ $? -ne 0 ]; then exit; fi
 
 
 echo Create a tarball for the Linux Client
 ../linux/tarball-macos.sh
-if [ $? -ne 0 ]; then exit; fi
 echo A tarball was created at $DEBIANSID
 
 
 echo Copying script to $DEBIANSID
 scp tarball-client-sid.sh $DEBIANSID:.
-if [ $? -ne 0 ]; then exit; fi
 ssh $DEBIANSID "./tarball-client-sid.sh"
-if [ $? -ne 0 ]; then exit; fi
 
 
 echo Cleaning up
 ssh $DEBIANSID "rm tarball-client-sid.sh"
-if [ $? -ne 0 ]; then exit; fi
 
 
 echo Copying tarball back to Desktop
 rm ~/Desktop/bibledit*tar.gz
 scp "$DEBIANSID:bibledit-5*.tar.gz" ~/Desktop
-if [ $? -ne 0 ]; then exit; fi
-
+echo Completed succesfully
