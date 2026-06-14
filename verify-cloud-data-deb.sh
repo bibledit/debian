@@ -16,7 +16,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-echo Verify the bibledit-cloud_n.n.nnn-n_arch.deb
+echo Verify the bibledit-cloud-data_n.n.nnn-n_all.deb
 
 # Exit script on error.
 set -e
@@ -28,21 +28,27 @@ if ! test -f "$DEB"; then
     exit
 fi
 
-# The minimum list of files that should be in the .deb package.
-essential_files=(
+echo Gathering required files
+../cloud/pkgdata/create.sh
 
-usr/bin/bibledit-cloud
-usr/lib/systemd/system/bibledit-cloud.service
-usr/share/man/man1/bibledit-cloud.1.gz
+# Copy list to /tmp
+cp ../cloud/pkgdata/files.txt /tmp
 
-)
+# Remove files not required
+sed -i.bak '/\/fonts/d' /tmp/files.txt
+
+# Load the minimum list of files that should be in the .deb package.
+essential_files=()
+while IFS= read -r line; do
+  essential_files+=("$line")
+done < /tmp/files.txt
 echo Checking the package on ${#essential_files[@]} essential files
 
-dpkg --contents "$DEB" > /tmp/files.txt
+dpkg --contents "$DEB" > /tmp/package.txt
 
 for file in "${essential_files[@]}"; do
-  if ! grep -q "$file" /tmp/files.txt; then
-     echo File "$file" does not exist in the package
+  if ! grep -q "$file" /tmp/package.txt; then
+    echo File "$file" does not exist in the package
   fi
 done
 
