@@ -27,10 +27,6 @@ DEBIAN_SOURCE=$(pwd)
 echo Running script in "$DEBIAN_SOURCE".
 
 
-# If the debian/README* or README.Debian files contain no useful content,
-# they should be updated with something useful, or else be removed.
-
-
 echo Remove unwanted files from the Debian packaging.
 find . -name .DS_Store -delete
 echo Remove macOS extended attributes fromm the packaging.
@@ -45,6 +41,8 @@ CLOUD_SOURCE="../cloud"
 pushd $CLOUD_SOURCE
 CLOUD_SOURCE=$(pwd)
 xattr -r -c ./*
+
+
 echo Create a tarball of the core cloud library.
 rm -f build/bibledit*gz
 cmake --build build --target dist

@@ -94,6 +94,7 @@ $ debc *.changes
 $ git diff <commit>
 $ dpkg-deb -c foo.deb
 $ licensecheck --check '.*' --recursive --deb-machine --lines 0 *
+$ Package contents check.
   
 
 Test the package.
