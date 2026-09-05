@@ -141,6 +141,7 @@ echo Remove extra font files.
 # Fix for the lintian warning "duplicate-font-file".
 rm fonts/SILEOT.ttf
 rm fonts/Montserrat*.ttf
+rm fonts/Cardo-Regular.ttf
 
 
 echo Remove GTK stuff
