@@ -125,6 +125,7 @@ echo Remove extra font files.
 rm fonts/SILEOT.ttf
 rm fonts/Montserrat*.ttf
 rm fonts/Cardo-Regular.ttf
+rm fonts/Esteban*
 
 
 echo Remove unwanted files.
